@@ -4,7 +4,7 @@ const typeDefs = require('./typeDefs');
 const resolvers = require('./resolvers');
 const mongoose = require('mongoose');
 
-const db = require('./config/keys').mongoURI;
+const db = require('./config/keys_dev').mongoURI;
 
 mongoose
   .connect(
