@@ -24,7 +24,7 @@ const server = new ApolloServer({
     let authToken = null
     let currentUser = null
     try{
-      authToken = req.headers.authentication
+      authToken = req.headers.authorization
       if (authToken) {
        currentUser = await findOrCreateUser(authToken)
       }

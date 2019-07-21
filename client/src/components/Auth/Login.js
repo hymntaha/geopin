@@ -17,9 +17,9 @@ const ME_QUERY = `
 
 const Login = ({ classes }) => {
   const onSuccess = async googleUser=>{
-    const idToken = googleUser.getAuthResponse().id_token
-     const client = new GraphQLClient('http://localhost:4000/graphql',{
-      headers: { authorization: idToken}
+    const idToken = googleUser.getAuthResponse().id_token;
+    const client = new GraphQLClient('http://localhost:4000/graphql',{
+        headers: { authorization: idToken}
     })
     const data = await client.request(ME_QUERY)
     console.log({data})
