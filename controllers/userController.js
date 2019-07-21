@@ -1,6 +1,6 @@
 const User = require('../models/User');
 const { OAuth2Client } = require('google-auth-library');
-const oathkey = require('./config/keys_dev').OATH_CLIENT_ID;
+const oathkey = require('../config/keys_dev').OATH_CLIENT_ID;
 
 const client = new OAuth2Client(oathkey);
 
