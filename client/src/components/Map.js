@@ -8,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import PinIcon from './PinIcon';
 import Context from '../context';
 
-
 const INITIAL_VIEWPORT = {
   latitude: 37.7577,
   longitude: -122.4376,
@@ -16,7 +15,7 @@ const INITIAL_VIEWPORT = {
 };
 
 const Map = ({ classes }) => {
-  const {state, dispatch} = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   const [viewport, setViewPort] = useState(INITIAL_VIEWPORT);
   const [userPosition, setUserPosition] = useState(null);
   useEffect(() => {
@@ -32,17 +31,17 @@ const Map = ({ classes }) => {
       });
     }
   };
-  const handleMapClick = ({lngLat, leftButton}) => {
-    if(!leftButton) return;
-    if(!state.draft) {
-      dispatch({ type: 'CREATE_DRAFT'})
+  const handleMapClick = ({ lngLat, leftButton }) => {
+    if (!leftButton) return;
+    if (!state.draft) {
+      dispatch({ type: 'CREATE_DRAFT' });
     }
-    const [longitude, latitude] = lngLat
+    const [longitude, latitude] = lngLat;
     dispatch({
       type: 'UPDATE_DRAFT_LOCATION',
-      payload: { longitude, latitude}
-    })
-  }
+      payload: { longitude, latitude },
+    });
+  };
 
   return (
     <div className={classes.root}>
