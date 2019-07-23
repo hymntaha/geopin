@@ -7,9 +7,23 @@ import AddAPhotoIcon from "@material-ui/icons/AddAPhotoTwoTone";
 import LandscapeIcon from "@material-ui/icons/LandscapeOutlined";
 import ClearIcon from "@material-ui/icons/Clear";
 import SaveIcon from "@material-ui/icons/SaveTwoTone";
+import Textarea from "@material-ui/core/es/InputBase/Textarea";
 
 const CreatePin = ({ classes }) => {
-  return <div>CreatePin</div>;
+  return (
+    <form className={classes.form}>
+      <Typography classname={classes.alignCenter} component="h2" variant="h4" color="secondary">
+        <LandscapeIcon className={classes.iconLarge}/> Pin Location
+      </Typography>
+      <div>
+        <TextField name="title" label="title" placeholder="Insert pin title"/>
+        <input accept="image/*" id="image" type="file" className={classes.input} />
+        <label htmlFor="image"><Button component="span" size="small" className={classes.button}>
+          <AddAPhotoIcon/>
+        </Button></label>
+      </div>
+    </form>
+  );
 };
 
 const styles = theme => ({
