@@ -34,7 +34,7 @@ const CreatePin = ({ classes }) => {
           </Button>
         </label>
       </div>
-      <div className={classes.contentFiled}>
+      <div className={classes.contentField}>
         <TextField
           name="content"
           label="content"
@@ -46,7 +46,12 @@ const CreatePin = ({ classes }) => {
         />
       </div>
       <div>
-
+        <Button className={classes.button} variant="contained" color="primary">
+          Discard <ClearIcon className={classes.leftIcon}/>
+        </Button>
+        <Button className={classes.button} variant="contained" color="secondary">
+          Submit <SaveIcon className={classes.leftIcon}/>
+        </Button>
       </div>
     </form>
   );
