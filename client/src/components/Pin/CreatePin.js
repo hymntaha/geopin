@@ -1,12 +1,12 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-// import TextField from "@material-ui/core/TextField";
-// import Typography from "@material-ui/core/Typography";
-// import Button from "@material-ui/core/Button";
-// import AddAPhotoIcon from "@material-ui/icons/AddAPhotoTwoTone";
-// import LandscapeIcon from "@material-ui/icons/LandscapeOutlined";
-// import ClearIcon from "@material-ui/icons/Clear";
-// import SaveIcon from "@material-ui/icons/SaveTwoTone";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import AddAPhotoIcon from "@material-ui/icons/AddAPhotoTwoTone";
+import LandscapeIcon from "@material-ui/icons/LandscapeOutlined";
+import ClearIcon from "@material-ui/icons/Clear";
+import SaveIcon from "@material-ui/icons/SaveTwoTone";
 
 const CreatePin = ({ classes }) => {
   return <div>CreatePin</div>;
