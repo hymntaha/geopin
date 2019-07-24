@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -7,12 +7,25 @@ import AddAPhotoIcon from '@material-ui/icons/AddAPhotoTwoTone';
 import LandscapeIcon from '@material-ui/icons/LandscapeOutlined';
 import ClearIcon from '@material-ui/icons/Clear';
 import SaveIcon from '@material-ui/icons/SaveTwoTone';
-import Textarea from '@material-ui/core/es/InputBase/Textarea';
+
+import Context from '../../context';
+
 
 const CreatePin = ({ classes }) => {
+  const {dispatch} = useContext(Context);
+
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
+
+  const handleDeleteDraft = () => {
+    setTitle("");
+    setImage("");
+    setContent("");
+    dispatch({type: "DELETE_DRAFT"})
+
+  }
 
   const handleSubmit = event =>{
     event.preventDefault();
@@ -38,7 +51,7 @@ const CreatePin = ({ classes }) => {
           onChange={e=> setImage(e.target.files[0])}
         />
         <label htmlFor="image">
-          <Button component="span" size="small" className={classes.button}>
+          <Button style={{ color: image && "green"}} component="span" size="small" className={classes.button}>
             <AddAPhotoIcon />
           </Button>
         </label>
@@ -56,7 +69,7 @@ const CreatePin = ({ classes }) => {
         />
       </div>
       <div>
-        <Button className={classes.button} variant="contained" color="primary">
+        <Button onClick={handleDeleteDraft} className={classes.button} variant="contained" color="primary">
           Discard <ClearIcon className={classes.leftIcon} />
         </Button>
         <Button
