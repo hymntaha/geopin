@@ -52,6 +52,7 @@ const CreatePin = ({ classes }) => {
       const {latitude, longitute} = state.draft;
       const variables = {title, image: url, content, latitude, longitute};
       const {createPin} = await client.request(CREATE_PIN_MUTATION, variables);
+      handleDeleteDraft()
     } catch (err){
       setSubmitting(false)
       console.error('Error creating pin', err)
