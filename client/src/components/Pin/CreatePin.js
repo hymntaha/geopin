@@ -49,7 +49,7 @@ const CreatePin = ({ classes }) => {
         headers: {authorization: idToken}
       });
       const url = await handleImageUpload();
-      const {latitude, longitute} = state;
+      const {latitude, longitute} = state.draft;
       const variables = {title, image: url, content, latitude, longitute};
       const {createPin} = await client.request(CREATE_PIN_MUTATION, variables);
     } catch (err){
