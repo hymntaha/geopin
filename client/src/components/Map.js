@@ -43,6 +43,7 @@ const Map = ({ classes }) => {
 
   const getPins = async () => {
     const { getPins } = await client.request(GET_PINS_QUERY);
+    dispatch({type: 'GET_PINS',payload: getPins})
   };
 
   const handleMapClick = ({ lngLat, leftButton }) => {
@@ -93,6 +94,17 @@ const Map = ({ classes }) => {
             <PinIcon size={40} color="hotpink" />
           </Marker>
         )}
+        {state.pins.map(pin=>{
+          <Marker
+            key={pin._id}
+            latitide={pin.latitude}
+            longitude={pin.longitude}
+            offsetLeft={-19}
+            offsetTop={-37}
+          >
+            <PinIcon size={40} color="darkblue" />
+          </Marker>
+        })}
       </ReactMapGL>
       <Blog />
     </div>
