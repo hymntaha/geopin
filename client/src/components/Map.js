@@ -4,9 +4,11 @@ import { withStyles } from '@material-ui/core/styles';
 // import Button from "@material-ui/core/Button";
 // import Typography from "@material-ui/core/Typography";
 // import DeleteIcon from "@material-ui/icons/DeleteTwoTone";
-import {useClient} from "../client";
+import { useClient } from '../client';
+import { GET_PINS_QUERY } from '../graphql/queries';
+
 import PinIcon from './PinIcon';
-import Blog from './Blog'
+import Blog from './Blog';
 import Context from '../context';
 
 const INITIAL_VIEWPORT = {
@@ -19,8 +21,13 @@ const Map = ({ classes }) => {
   const { state, dispatch } = useContext(Context);
   const [viewport, setViewPort] = useState(INITIAL_VIEWPORT);
   const [userPosition, setUserPosition] = useState(null);
+
   useEffect(() => {
     getUserPosition();
+  }, []);
+
+  useEffect(() => {
+    getPins();
   }, []);
 
   const getUserPosition = () => {
@@ -32,6 +39,11 @@ const Map = ({ classes }) => {
       });
     }
   };
+
+  const getPins = async () => {
+    const { getPins } = await client.request(GET_PINS_QUERY);
+  };
+
   const handleMapClick = ({ lngLat, leftButton }) => {
     if (!leftButton) return;
     if (!state.draft) {
@@ -81,7 +93,7 @@ const Map = ({ classes }) => {
           </Marker>
         )}
       </ReactMapGL>
-      <Blog/>
+      <Blog />
     </div>
   );
 };
