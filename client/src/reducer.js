@@ -19,6 +19,7 @@ export default function reducer(state, { type, payload }) {
     case 'CREATE_DRAFT':
       return {
         ...state,
+        currentPin: null,
         draft: {
           latitude: 0,
           longitude: 0,
