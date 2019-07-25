@@ -19,15 +19,16 @@ const INITIAL_VIEWPORT = {
 
 const Map = ({ classes }) => {
   const { state, dispatch } = useContext(Context);
+
+  useEffect(() => {
+    getPins();
+  }, []);
+
   const [viewport, setViewPort] = useState(INITIAL_VIEWPORT);
   const [userPosition, setUserPosition] = useState(null);
 
   useEffect(() => {
     getUserPosition();
-  }, []);
-
-  useEffect(() => {
-    getPins();
   }, []);
 
   const getUserPosition = () => {
