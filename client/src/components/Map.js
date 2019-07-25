@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import differenceInMinutes from 'date-fns/difference_in_minutes';
 
 // import Button from "@material-ui/core/Button";
-// import Typography from "@material-ui/core/Typography";
+import Typography from "@material-ui/core/Typography";
 // import DeleteIcon from "@material-ui/icons/DeleteTwoTone";
 import { useClient } from '../client';
 import { GET_PINS_QUERY } from '../graphql/queries';
@@ -128,6 +128,15 @@ const Map = ({ classes }) => {
             />
           </Marker>;
         })}
+        {popup && (
+          <Popup anchor="top" latitide={popup.latitude}
+                 longitude={popup.longitude} closeOnClick(false} onClose={()=> setPopup(null)}>
+            <img className={classes.popImage} src={popup.image} alt={popup.title}/>
+            <Typography>
+          {popup.latitude.toFixed(6)},{popup.longitude.toFixed(6)},
+          </Typography>
+          </Popup>
+        )}
       </ReactMapGL>
       <Blog />
     </div>
