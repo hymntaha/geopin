@@ -33,8 +33,7 @@ const Map = ({ classes }) => {
     getUserPosition();
   }, []);
 
-  const [popup,setPopup] = useState(null)
-
+  const [popup, setPopup] = useState(null);
 
   const getUserPosition = () => {
     if ('geolocation' in navigator) {
@@ -48,7 +47,7 @@ const Map = ({ classes }) => {
 
   const getPins = async () => {
     const { getPins } = await client.request(GET_PINS_QUERY);
-    dispatch({type: 'GET_PINS',payload: getPins})
+    dispatch({ type: 'GET_PINS', payload: getPins });
   };
 
   const handleMapClick = ({ lngLat, leftButton }) => {
@@ -63,19 +62,20 @@ const Map = ({ classes }) => {
     });
   };
 
-  const highlightNewPin = pin =>{
-    const isNewPin = differenceInMinutes(Date.now(), Number(pin.createdAt)) <= 30
+  const highlightNewPin = pin => {
+    const isNewPin =
+      differenceInMinutes(Date.now(), Number(pin.createdAt)) <= 30;
 
     return isNewPin ? 'limegreen' : 'darkblue';
-  }
+  };
 
   const handleSelectPin = pin => {
     setPopup(pin);
     dispatch({
       type: 'SET_PIN',
-      payload: pin
-    })
-  }
+      payload: pin,
+    });
+  };
 
   return (
     <div className={classes.root}>
@@ -113,7 +113,7 @@ const Map = ({ classes }) => {
             <PinIcon size={40} color="hotpink" />
           </Marker>
         )}
-        {state.pins.map(pin=>{
+        {state.pins.map(pin => {
           <Marker
             key={pin._id}
             latitide={pin.latitude}
@@ -121,8 +121,12 @@ const Map = ({ classes }) => {
             offsetLeft={-19}
             offsetTop={-37}
           >
-            <PinIcon onClick={()=>handleSelectPin(pin)} size={40} color={highlightNewPin(pin)} />
-          </Marker>
+            <PinIcon
+              onClick={() => handleSelectPin(pin)}
+              size={40}
+              color={highlightNewPin(pin)}
+            />
+          </Marker>;
         })}
       </ReactMapGL>
       <Blog />
