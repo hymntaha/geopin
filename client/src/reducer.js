@@ -50,6 +50,7 @@ export default function reducer(state, { type, payload }) {
       return {
         ...state,
         currentPin: payload,
+        draft: null
       };
     default:
       return state;
