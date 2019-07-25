@@ -33,6 +33,9 @@ const Map = ({ classes }) => {
     getUserPosition();
   }, []);
 
+  const [popup,setPopup] = useState(null)
+
+
   const getUserPosition = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
@@ -64,6 +67,14 @@ const Map = ({ classes }) => {
     const isNewPin = differenceInMinutes(Date.now(), Number(pin.createdAt)) <= 30
 
     return isNewPin ? 'limegreen' : 'darkblue';
+  }
+
+  const handleSelectPin = pin => {
+    setPopup(pin);
+    dispatch({
+      type: 'SET_PIN',
+      payload: pin
+    })
   }
 
   return (
@@ -110,7 +121,7 @@ const Map = ({ classes }) => {
             offsetLeft={-19}
             offsetTop={-37}
           >
-            <PinIcon size={40} color={highlightNewPin(pin)} />
+            <PinIcon onClick={()=>handleSelectPin(pin)} size={40} color={highlightNewPin(pin)} />
           </Marker>
         })}
       </ReactMapGL>
