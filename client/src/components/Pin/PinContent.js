@@ -1,7 +1,7 @@
 import React, { useContext} from "react";
 import { withStyles } from "@material-ui/core/styles";
 // import Typography from "@material-ui/core/Typography";
-// import AccessTime from "@material-ui/icons/AccessTime";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import FaceIcon from "@material-ui/icons/Face";
 
 import Context from '../../context';
@@ -19,8 +19,13 @@ const PinContent = ({ classes }) => {
       <Typography className={classes.text} component="h2" variant="h6" color="inherit" gutterBottom>
         <FaceIcon className={classes.icon}/>{author.name}
       </Typography>
-      <Typography className={classes.text} component="h2" variant="h6" color="inherit" gutterBottom>
-        <FaceIcon className={classes.icon}/>{author.name}
+      <Typography className={classes.text} variant="subtitle2" color="inherit" gutterBottom>
+        <AccessTimeIcon className={classes.icon}/>
+        {createdAt}
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom>
+        <AccessTimeIcon className={classes.icon}/>
+        {content}
       </Typography>
     </div>
   );
