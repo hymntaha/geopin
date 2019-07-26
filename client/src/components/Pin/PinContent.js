@@ -6,7 +6,7 @@ import FaceIcon from "@material-ui/icons/Face";
 
 import Context from '../../context';
 import Typography from "@material-ui/core/es/Typography/Typography";
-
+import format from 'date-fns/format'
 
 const PinContent = ({ classes }) => {
   const {state} = useContext(Context);
@@ -21,7 +21,7 @@ const PinContent = ({ classes }) => {
       </Typography>
       <Typography className={classes.text} variant="subtitle2" color="inherit" gutterBottom>
         <AccessTimeIcon className={classes.icon}/>
-        {createdAt}
+        {format(Number(createdAt), "MMM Do, YYYY")}
       </Typography>
       <Typography variant="subtitle1" gutterBottom>
         <AccessTimeIcon className={classes.icon}/>
