@@ -2,7 +2,7 @@ import React, { useContext} from "react";
 import { withStyles } from "@material-ui/core/styles";
 // import Typography from "@material-ui/core/Typography";
 // import AccessTime from "@material-ui/icons/AccessTime";
-// import Face from "@material-ui/icons/Face";
+import FaceIcon from "@material-ui/icons/Face";
 
 import Context from '../../context';
 import Typography from "@material-ui/core/es/Typography/Typography";
@@ -16,8 +16,11 @@ const PinContent = ({ classes }) => {
       <Typography component="h2" variant="h4" color="primary" gutterBottom>
         {title}
       </Typography>
-      <Typography>
-
+      <Typography className={classes.text} component="h2" variant="h6" color="inherit" gutterBottom>
+        <FaceIcon className={classes.icon}/>{author.name}
+      </Typography>
+      <Typography className={classes.text} component="h2" variant="h6" color="inherit" gutterBottom>
+        <FaceIcon className={classes.icon}/>{author.name}
       </Typography>
     </div>
   );
