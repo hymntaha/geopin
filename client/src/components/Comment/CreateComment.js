@@ -23,7 +23,7 @@ const CreateComment = ({ classes }) => {
     );
     dispatch({ type: 'CREATE_COMMENT', payload: createComment });
 
-    setComment("")
+    setComment('');
   };
 
   return (
