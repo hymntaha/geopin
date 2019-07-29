@@ -50,8 +50,8 @@ export const CREATE_COMMENT_MUTATION = `
         text
         createdAt
         author {
-        name
-        picture
+          name
+          picture
         }
       }    
    }
