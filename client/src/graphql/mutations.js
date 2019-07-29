@@ -45,10 +45,16 @@ export const CREATE_COMMENT_MUTATION = `
       author{
         _id
         name
-        email
+      }
+      comments{
+        text
+        createdAt
+        author {
+        name
         picture
-    }
-  }
+        }
+      }    
+   }
+}
 
-
-`
+`;
