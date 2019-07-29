@@ -22,6 +22,8 @@ const CreateComment = ({ classes }) => {
       variables,
     );
     dispatch({ type: 'CREATE_COMMENT', payload: createComment });
+
+    setComment("")
   };
 
   return (
