@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import SendIcon from '@material-ui/icons/Send';
 import Divider from '@material-ui/core/Divider';
+import { CREATE_PIN_MUTATION } from '../../graphql/mutations';
+import { useClient } from '../../client';
 
 const CreateComment = ({ classes }) => {
+  const client = useClient();
+  const [comment, setComment] = useState('');
   return (
     <div>
       <form className={classes.form}>
-        <IconButton className={classes.clearButton}>
+        <IconButton disabled={!comment.trim()} className={classes.clearButton}>
           <ClearIcon />
         </IconButton>
-        <InputBase multiline={true} className={classes.input} placeholder='Add Comment'/>
-        <IconButton className={classes.sendButton}>
-          <SendIcon/>
+        <InputBase
+          multiline={true}
+          className={classes.input}
+          placeholder="Add Comment"
+          value={comment}
+          onChange={e => setComment(e.target.value)}
+        />
+        <IconButton cdisabled={!comment.trim()} lassName={classes.sendButton}>
+          <SendIcon />
         </IconButton>
       </form>
-      <Divider/>
+      <Divider />
     </div>
   );
 };
